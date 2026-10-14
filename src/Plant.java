@@ -24,8 +24,8 @@ public abstract class Plant implements LiquidCalculator {
         this.heightInMeter = heightInMeter;
     }
 
-    public Liquids getTypeOfLiquid() {
-        return typeOfLiquid;
+    public String getTypeOfLiquid() {
+        return typeOfLiquid.getValue();
     }
 
     public void setTypeOfLiquid(Liquids typeOfLiquid) {

@@ -11,20 +11,34 @@ public class GreenHotel {
         plants.put("olof", new Palm("Olof", 1 ) );
     }
 
-    public void showAllPlants (){
+    /**
+     * Returns all plants names as text.
+     *
+     * @return text listing the names of plants
+     */
+    public String allPlants (){
+        StringBuilder sb = new StringBuilder();
+        sb.append("Greenest har följande växter:\n");
         for(Plant plant : plants.values()){
-            System.out.println(plant);
+            sb.append("  ").append(plant.name).append("\n");
         }
+        return sb.toString();
     }
 
     public boolean hasPlant(String searchWord){
         return plants.containsKey(searchWord);
     }
 
+    /**
+     * Returns which type of liquid and how much it required by the specified plant.
+     *
+     * @param plantName the name of the plant
+     * @return the message that contains what kind of liquid and how much it required
+     */
     public String getLiquidAmount(String plantName){
         Plant target = plants.get(plantName);
         double liquidAmount = target.AmountOfLiquidInLiter();
-        String liquidType = target.getTypeOfLiquid().getValue();
+        String liquidType = target.getTypeOfLiquid();
 
         String result = "Du behöver ge " + target.getName() + " " + liquidAmount + " liter "+ liquidType + " per dag.";
 

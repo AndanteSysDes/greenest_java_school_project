@@ -1,62 +1,78 @@
-import java.util.Scanner;
+import javax.swing.*;
 
 public class View {
 
-    Scanner scanner;
     GreenHotel hotel;
 
-    String startMessage = "Välkommen till Växthotellet Greenest";
-    String askingMessage = "Vilken växt ska få vätska? Ange ett namn:";
+    private static final String SEPARATOR = "----------------------------------------------------\n";
 
     public View(GreenHotel hotel){
-        scanner = new Scanner(System.in);
         this.hotel = hotel;
     }
 
-    public void closeScanner() {
-        scanner.close();
+    public void showStartMessage(){
+        String startMessage = "Välkommen till Växthotellet Greenest";
+        JOptionPane.showMessageDialog(null, startMessage);
     }
 
-    public void printSeparator(){
-        System.out.println("----------------------------------------------------");
-    }
-
-    public void printDoubleSeparator() {
-        System.out.println("===================================================");
-    }
-
-    public void printStartMessage(){
-        printDoubleSeparator();
-        System.out.println(startMessage);
-        printDoubleSeparator();
-    }
-
-    public void showHotelPlants(){
-        hotel.showAllPlants();
-        printSeparator();
-    }
-
+    /**
+     * Shows all plants and ask user input a plant name on a question dialog.
+     * It repeats until the user chooses a plant that exist in the hotel.
+     *
+     * @return the plants name in lower case, or {@code null} if the user choose cancel.
+     */
     public String askPlantName(){
         while(true){
-            System.out.print(askingMessage);
-            String input = scanner.nextLine().trim();
-            String searchWord = input.toLowerCase();
+            String askingMessage = "Vilken växt ska få vätska?\nAnge ett namn:\n";
+            String input = JOptionPane.showInputDialog(
+                    hotel.allPlants() +
+                            SEPARATOR +
+                            askingMessage
+            );
+
+            if(input==null){
+                return null;
+            }
+
+            String searchWord = input.trim().toLowerCase();
             if(hotel.hasPlant(searchWord)){
                 return searchWord;
             }
-            System.out.println("Hotellet har inte " + input + ". Försök igen.");
+
+            JOptionPane.showMessageDialog(
+                    null,
+                    "Hotellet har inte " + input + ". Försök igen."
+            );
         }
     }
 
+    /*
+    Programmet visar en ny ruta som talar om:
+    hur mycket vätska växten ska ha
+    vilken sorts vätska det är (kranvatten, mineralvatten eller proteindryck)
+     */
+
+    /**
+     * Displays a new window that tells you:
+     * <ul>
+     *     <li>How much liquid the plant needs</li>
+     *     <li>What kind of liquid it is</li>
+     * </ul>
+     * @param plantName the name of the plant
+     */
     public void showWaterAmount(String plantName){
-        /*
-        Programmet visar en ny ruta som talar om:
-        hur mycket vätska växten ska ha
-        vilken sorts vätska det är (kranvatten, mineralvatten eller proteindryck)
-         */
-        System.out.println();
-        System.out.println(hotel.getLiquidAmount(plantName));
-        System.out.println();
+        JOptionPane.showMessageDialog(
+                null,
+                hotel.getLiquidAmount(plantName)
+        );
+    }
+
+    public void showCancelMessage(){
+        String CANCEL_MESSAGE = "Åtgärden har avbrutits.";
+        JOptionPane.showMessageDialog(
+                null,
+                CANCEL_MESSAGE
+        );
     }
 
 
