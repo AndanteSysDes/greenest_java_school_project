@@ -12,7 +12,8 @@ public class Cactus extends Plant {
         /*
         Formel: 2 cl per dag
         */
-        return 0.02;
+        final double LIQUID = 0.02;
+        return LIQUID;
     }
 
     @Override
