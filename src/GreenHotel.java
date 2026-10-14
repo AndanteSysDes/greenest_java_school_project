@@ -17,10 +17,11 @@ public class GreenHotel {
      * @return text listing the names of plants
      */
     public String allPlants (){
+        String firstMessage = "Greenest har följande växter:\n";
         StringBuilder sb = new StringBuilder();
-        sb.append("Greenest har följande växter:\n");
+        sb.append(firstMessage);
         for(Plant plant : plants.values()){
-            sb.append("  ").append(plant.name).append("\n");
+            sb.append("  " + plant.name + "\n");
         }
         return sb.toString();
     }
@@ -36,13 +37,23 @@ public class GreenHotel {
      * @return the message that contains what kind of liquid and how much it required
      */
     public String getLiquidAmount(String plantName){
+        String messageTemplate = "Du behöver ge %s %.2f liter %s per dag.";
+
         Plant target = plants.get(plantName);
-        double liquidAmount = target.AmountOfLiquidInLiter();
+
+        /*
+        Här används polymorfism.
+        `target` kan vara en instans av `Palm`, `Cactus` eller `CarnivorousPlants`.
+        Eftersom alla tre klasserna ärver från `Plant` kan ett `GreenHotel`-objekt anropa samma metod på `target`.
+        Metoden beter sig olika beroende på vilken klass objektet tillhör.
+         */
+        double liquidAmount = target.amountOfLiquidInLiter();
+
         String liquidType = target.getTypeOfLiquid();
 
-        String result = "Du behöver ge " + target.getName() + " " + liquidAmount + " liter "+ liquidType + " per dag.";
+        String message =  messageTemplate.formatted(target.getName(), liquidAmount, liquidType);
 
-        return result;
+        return message;
     }
 
 

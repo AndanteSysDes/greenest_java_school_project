@@ -6,7 +6,7 @@ public class CarnivorousPlants extends Plant{
     }
 
     @Override
-    public double AmountOfLiquidInLiter() {
+    public double amountOfLiquidInLiter() {
         /*
         Formel: en basnivå på 0,1 liter per dag plus 0,2 liter gånger längden i meter
         Exempel: en köttätande växt som är 50 cm hög behöver 0,1 + (0,2 × 0,5) = 0,2 liter per dag
