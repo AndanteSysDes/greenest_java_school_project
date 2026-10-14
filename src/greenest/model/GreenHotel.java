@@ -1,7 +1,15 @@
+package greenest.model;
+
 import java.util.HashMap;
 import java.util.Map;
 
 public class GreenHotel {
+    /*
+     * Inkapsling:
+     * Plantsamlingen är private för att förhindra direkt åtkomst
+     * från andra klasser. Informationen hanteras istället
+     * genom klassens publika metoder.
+     */
     private Map<String, Plant> plants = new HashMap<>();
 
     public GreenHotel(){
@@ -21,7 +29,7 @@ public class GreenHotel {
         StringBuilder sb = new StringBuilder();
         sb.append(firstMessage);
         for(Plant plant : plants.values()){
-            sb.append("  " + plant.name + "\n");
+            sb.append("  " + plant.getName() + "\n");
         }
         return sb.toString();
     }

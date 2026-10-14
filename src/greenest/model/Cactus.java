@@ -1,4 +1,6 @@
-public class Cactus extends Plant{
+package greenest.model;
+
+public class Cactus extends Plant {
 
     public Cactus(String name, double height){
         super(name, height);
@@ -10,7 +12,8 @@ public class Cactus extends Plant{
         /*
         Formel: 2 cl per dag
         */
-        return 0.02;
+        final double LIQUID = 0.02;
+        return LIQUID;
     }
 
     @Override

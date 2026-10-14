@@ -1,8 +1,12 @@
+package greenest.ui;
+
+import greenest.model.GreenHotel;
+
 import javax.swing.*;
 
 public class View {
 
-    GreenHotel hotel;
+    private GreenHotel hotel;
 
     private static final String SEPARATOR = "----------------------------------------------------\n";
 

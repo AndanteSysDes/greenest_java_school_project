@@ -1,3 +1,5 @@
+package greenest.model;
+
 public enum Liquids {
     TAP_WATER("kranvatten"),
     PROTEIN_DRINK("proteindryck"),
