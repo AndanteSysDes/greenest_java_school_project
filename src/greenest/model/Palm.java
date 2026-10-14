@@ -1,3 +1,5 @@
+package greenest.model;
+
 public class Palm extends Plant{
 
     public Palm (String name, double height){

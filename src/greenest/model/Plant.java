@@ -6,6 +6,8 @@ Plant-klassen behöver inte ha instans, så jag sätt "abstract" på Plant-klass
 Dessutom implementerade jag LiquidCalculator-interface på Plant-klassen.
 Det innebär att barn klasserna måste implementera amountOfLiquidInLiter()-metod, vilket förhindrar att man glömmer att beskriva nödvändiga funktioner.
 */
+package greenest.model;
+
 public abstract class Plant implements LiquidCalculator {
     protected String name;
     protected double heightInMeter;

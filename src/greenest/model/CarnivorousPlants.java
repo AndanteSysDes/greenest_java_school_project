@@ -1,4 +1,6 @@
-public class CarnivorousPlants extends Plant{
+package greenest.model;
+
+public class CarnivorousPlants extends Plant {
 
     public CarnivorousPlants(String name, double height){
         super(name, height);
