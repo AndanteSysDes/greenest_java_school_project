@@ -3,13 +3,14 @@ public class Main {
         GreenHotel hotel = new GreenHotel();
         View view = new View(hotel);
 
-        view.printStartMessage();
-
-        view.showHotelPlants();
+        view.showStartMessage();
         String targetName = view.askPlantName();
+        if(targetName==null){
+            view.showCancelMessage();
+            System.exit(0);
+        }
         view.showWaterAmount(targetName);
 
-        view.closeScanner();
     }
 
 }
