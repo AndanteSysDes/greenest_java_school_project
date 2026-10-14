@@ -19,38 +19,40 @@ public class View {
      * Shows all plants and ask user input a plant name on a question dialog.
      * It repeats until the user chooses a plant that exist in the hotel.
      *
-     * @return the plants name in lower case, or {@code null} if the user choose cancel.
+     * @return the plants name in lower case, or {@code null} if it's canceled or catch an error.
      */
     public String askPlantName(){
-        while(true){
-            String askingMessage = "Vilken växt ska få vätska?\nAnge ett namn:\n";
-            String input = JOptionPane.showInputDialog(
-                    hotel.allPlants() +
-                            SEPARATOR +
-                            askingMessage
-            );
+        String askingMessage = "Vilken växt ska få vätska?\nAnge ett namn:\n";
+        String wrongMessage = "Hotellet har inte %s. Försök igen.";
 
-            if(input==null){
+        while(true){
+            try {
+                String input = JOptionPane.showInputDialog(
+                        hotel.allPlants() +
+                                SEPARATOR +
+                                askingMessage
+                );
+
+                if(input==null){
+                    return null;
+                }
+
+                input = input.trim();
+                String searchWord = input.toLowerCase();
+                if(hotel.hasPlant(searchWord)){
+                    return searchWord;
+                }
+
+                JOptionPane.showMessageDialog(
+                        null,
+                        wrongMessage.formatted(input)
+                );
+
+            } catch (Exception e){
                 return null;
             }
-
-            String searchWord = input.trim().toLowerCase();
-            if(hotel.hasPlant(searchWord)){
-                return searchWord;
-            }
-
-            JOptionPane.showMessageDialog(
-                    null,
-                    "Hotellet har inte " + input + ". Försök igen."
-            );
         }
     }
-
-    /*
-    Programmet visar en ny ruta som talar om:
-    hur mycket vätska växten ska ha
-    vilken sorts vätska det är (kranvatten, mineralvatten eller proteindryck)
-     */
 
     /**
      * Displays a new window that tells you:
@@ -68,14 +70,10 @@ public class View {
     }
 
     public void showCancelMessage(){
-        String CANCEL_MESSAGE = "Åtgärden har avbrutits.";
+        String cancelMessage = "Åtgärden har avbrutits.";
         JOptionPane.showMessageDialog(
                 null,
-                CANCEL_MESSAGE
+                cancelMessage
         );
     }
-
-
-
-
 }

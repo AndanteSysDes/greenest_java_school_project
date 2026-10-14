@@ -1,3 +1,11 @@
+/*
+Jag använder arv och interface.
+Plant-klassen fungerar som basklassen för Palm, Cactus och CarnivorousPlants klasser.
+På så sätt minskar jag mängden källkod och håller barn klasserna koncisa.
+Plant-klassen behöver inte ha instans, så jag sätt "abstract" på Plant-klassen.
+Dessutom implementerade jag LiquidCalculator-interface på Plant-klassen.
+Det innebär att barn klasserna måste implementera amountOfLiquidInLiter()-metod, vilket förhindrar att man glömmer att beskriva nödvändiga funktioner.
+*/
 public abstract class Plant implements LiquidCalculator {
     protected String name;
     protected double heightInMeter;

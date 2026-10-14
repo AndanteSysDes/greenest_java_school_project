@@ -6,11 +6,11 @@ public class Cactus extends Plant{
     }
 
     @Override
-    public double AmountOfLiquidInLiter() {
+    public double amountOfLiquidInLiter() {
         /*
         Formel: 2 cl per dag
         */
-        return 0.2;
+        return 0.02;
     }
 
     @Override
