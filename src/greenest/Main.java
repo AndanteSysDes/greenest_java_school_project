@@ -1,3 +1,5 @@
+package greenest;
+
 import greenest.model.GreenHotel;
 import greenest.ui.View;
 

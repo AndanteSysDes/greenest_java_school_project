@@ -9,6 +9,12 @@ Det innebär att barn klasserna måste implementera amountOfLiquidInLiter()-meto
 package greenest.model;
 
 public abstract class Plant implements LiquidCalculator {
+    /*
+     * Inkapsling:
+     * Instansvariablerna är protected så att subklasser
+     * kan använda dem direkt, medan åtkomsten
+     * från andra paket begränsas.
+     */
     protected String name;
     protected double heightInMeter;
     protected Liquids typeOfLiquid;
