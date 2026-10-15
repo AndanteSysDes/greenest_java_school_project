@@ -1,4 +1,4 @@
-[Engelska README](README.md)
+[English README](README.md)
 
 # Växthotellet Greenest 🌱
 
